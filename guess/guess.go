@@ -13,7 +13,7 @@ func main() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	low := 1
-	high := 100
+	high := 10
 
 	fmt.Println("Please think of a number between", low, "and", high)
 	fmt.Println("Press enter when ready")
@@ -29,9 +29,9 @@ func main() {
 		guess := (low + high) / 2
 		fmt.Println("I guess the number is", guess)
 		fmt.Println("Is that:")
-		fmt.Println("(a) too high?")
-		fmt.Println("(b) too low?")
-		fmt.Println("(C) correct?")
+		fmt.Println("(a) Calm down Cheech, you're way too high?")
+		fmt.Println("(b) Way too low, you kind of suck at this?")
+		fmt.Println("(c) Am I correct?")
 		scanner.Scan()
 		response := scanner.Text()
 
@@ -40,7 +40,7 @@ func main() {
 		} else if response == "b" {
 			low = guess + 1
 		} else if response == "c" {
-			fmt.Println("I won")
+			fmt.Println("Winner, winner, chicken dinner!")
 			break
 		} else {
 			fmt.Println("Invalid response, try again")
