@@ -7,12 +7,12 @@ type storyPage struct {
 	nextPage *storyPage
 }
 
-func playStory(page *storyPage) {
+func (page *storyPage) playStory() {
 	if page == nil {
 		return
 	}
 	fmt.Println(page.text)
-	playStory(page.nextPage)
+	page.nextPage.playStory()
 }
 func main() {
 
