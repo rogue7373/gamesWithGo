@@ -8,23 +8,46 @@ type storyPage struct {
 }
 
 func (page *storyPage) playStory() {
-	if page == nil {
-		return
+	for page != nil {
+		fmt.Println(page.text)
+		page = page.nextPage
 	}
-	fmt.Println(page.text)
-	page.nextPage.playStory()
+
 }
+
+// Linked lists
+func (page *storyPage) addToEnd(text string) {
+	for page.nextPage != nil {
+		page = page.nextPage
+
+	}
+	page.nextPage = &storyPage{text, nil}
+
+}
+
+// Add new node
+func (page *storyPage) addAfter(text string) {
+	newPage := &storyPage{text, page.nextPage}
+	page.nextPage = newPage
+}
+
+// Delete to be added (coming back to this)
+
 func main() {
 
 	page1 := storyPage{"It was a dark and stormy night.", nil}
-	page2 := storyPage{"You are alone, and you need to fin the sacred helmet before the bad guys do", nil}
-	page3 := storyPage{"You see a troll ahead", nil}
+	page1.addToEnd("You are alone, and you need to fin the sacred helmet before the bad guys do")
+	page1.addToEnd("You see a troll ahead")
 
-	page1.nextPage = &page2
-	page2.nextPage = &page3
+	// Testing adding a page after the initial page 1
+	page1.addAfter("Testing addAfter")
 
-	playStory(&page1)
+	// Functions - has a return value - may also execute commands
+	// Procedures - has no return value, just executes commands
+	// Method call - Functions that are attached to a struct/object/etc
+
+	page1.playStory()
 
 }
 
-// Games with Go Youtube Series - Ep. 03.2
+// Games with Go Youtube Series - Ep. 04 "gameswithgo.org"
