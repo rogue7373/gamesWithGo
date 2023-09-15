@@ -64,6 +64,7 @@ func main() {
 	root.yesPath = &losing
 	root.noPath = &winning
 
-	// root.play()
 	root.printStory(0)
+
+	root.play()
 }
